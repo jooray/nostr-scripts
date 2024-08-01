@@ -9,7 +9,14 @@ if len(sys.argv) < 2:
 
 relay = sys.argv[1]
 
-data = json.loads(sys.stdin.read())
+data = []
+for line in sys.stdin:
+  try:
+    item = json.loads(line)
+    data.append(item)
+  except json.JSONDecodeError as e:
+    print(f"Error decoding JSON: {e}", file=sys.stderr)
+    continue
 
 # Execute the binary for each element in the JSON array
 for item in data:

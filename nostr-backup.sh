@@ -43,3 +43,5 @@ done
 
 echo "Publishing to ${TARGET_RELAY}..."
 sort -u ~/tmp/nostr-backup.json | nak event ${TARGET_RELAY}
+#Remove duplicities again for future use.
+sort -u -o ~/tmp/nostr-backup.json ~/tmp/nostr-backup.json

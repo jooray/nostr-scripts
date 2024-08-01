@@ -7,5 +7,5 @@ for RELAY in wss://relay.nostrplebs.com wss://relay.nostr.band
 do
     echo "Publishing to ${RELAY}"
     # We can post to different relays in parallel, they don't know about each other
-    do python3 slow-post.py "${RELAY}" < "${1}";done ) &
+    python3 slow-post.py "${RELAY}" < "${1}" &
 done
